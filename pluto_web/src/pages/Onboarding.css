@@ -1,0 +1,347 @@
+.onboarding-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  padding: 20px;
+}
+
+.onboarding-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 450px;
+}
+
+.onboarding-back-btn {
+  position: absolute;
+  top: -40px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+
+.onboarding-back-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.onboarding-card {
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 40px 30px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  position: relative;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Custom Scrollbar for Card */
+.onboarding-card::-webkit-scrollbar {
+  width: 1.5px;
+}
+.onboarding-card::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 32px 0; /* Avoids hitting the 32px border radius */
+}
+.onboarding-card::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.onboarding-card:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+.onboarding-card::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Scroll Indicator ────────────────────────────── */
+.scroll-indicator-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1.5rem;
+}
+
+.scroll-indicator-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(18, 18, 18, 1) 0%, rgba(18, 18, 18, 0.8) 40%, rgba(18, 18, 18, 0) 100%);
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+}
+
+.scroll-indicator-btn {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.scroll-indicator-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(2px);
+}
+
+.onboarding-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.onboarding-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.onboarding-header p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ── Role Toggle ────────────────────────────── */
+.onboarding-role-toggle {
+  display: flex;
+  gap: 8px;
+  background: rgba(255,255,255,0.05);
+  padding: 4px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.onboarding-role-toggle button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.onboarding-role-toggle button.active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.onboarding-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.onboarding-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.onboarding-input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 4px;
+}
+
+.onboarding-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.onboarding-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 5;
+}
+
+.onboarding-dropdown-trigger {
+  width: 100%;
+  height: 50px;
+  background: #1c1c1e !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 24px !important;
+  padding: 0 16px 0 44px !important;
+  color: #fff !important;
+  font-size: 0.95rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.onboarding-dropdown-trigger:hover {
+  border-color: rgba(165, 180, 252, 0.5) !important;
+  background: #2c2c2e !important;
+}
+
+.onboarding-dropdown-trigger:focus,
+.onboarding-dropdown-trigger[data-state="open"] {
+  outline: none;
+  border-color: #a5b4fc !important;
+  background: #2c2c2e !important;
+  box-shadow: 0 0 0 3px rgba(165, 180, 252, 0.2) !important;
+}
+
+.onboarding-dropdown-content {
+  background: rgba(18, 18, 18, 0.5) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 16px !important;
+  padding: 8px !important;
+  max-height: 250px;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  z-index: 1000;
+}
+
+/* Customize scrollbar for dropdown */
+.onboarding-dropdown-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.onboarding-dropdown-content::-webkit-scrollbar {
+  width: 4px;
+}
+.onboarding-dropdown-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+.onboarding-dropdown-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Ensure dropdown menu items are styled correctly globally inside this component */
+.onboarding-dropdown-content [role="menuitem"] {
+  padding: 10px 12px !important;
+  border-radius: 8px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-size: 0.9rem !important;
+}
+
+.onboarding-dropdown-content [role="menuitem"]:hover,
+.onboarding-dropdown-content [role="menuitem"]:focus {
+  background: rgba(165, 180, 252, 0.15) !important;
+  color: #fff !important;
+  outline: none !important;
+}
+
+.onboarding-submit-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+  color: #0f0f19;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.3);
+  margin-top: 10px;
+}
+
+.onboarding-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(129, 140, 248, 0.4);
+}
+
+.onboarding-submit-btn:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.onboarding-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(15, 15, 25, 0.2);
+  border-top-color: #0f0f19;
+  border-radius: 50%;
+  animation: onboarding-spin 0.8s linear infinite;
+}
+
+@keyframes onboarding-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .onboarding-content {
+    padding: 15px;
+  }
+  
+  .onboarding-card {
+    padding: 30px 20px;
+  }
+  
+  .onboarding-header h1 {
+    font-size: 1.7rem;
+  }
+  
+  .onboarding-back-btn {
+    top: -50px;
+    left: 15px;
+  }
+}

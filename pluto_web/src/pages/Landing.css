@@ -1,0 +1,706 @@
+/* ─── Redesigned Landing — Cinematic Flow ─── */
+
+.landing-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-color: #111111;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.landing-no-dock {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── ONE Logo — transitions from center to navbar and STAYS ─── */
+
+.landing-logo-animated {
+  position: fixed;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  /* Smooth transition when switching from center → navbar */
+  transition: top 1s cubic-bezier(0.4, 0, 0.2, 1),
+              left 1s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Position: big and centered */
+.logo-at-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Position: small and in navbar — STAYS here permanently */
+.logo-at-navbar {
+  top: calc(20px + var(--safe-top, 0px) + 0.75rem);
+  left: calc((100vw - min(calc(100vw - 40px), 1400px)) / 2 + 2rem);
+  transform: translate(0, 0) scale(0.42);
+  transform-origin: top left;
+}
+
+/* ─── Navbar Bar ─── */
+
+.landing-topbar {
+  display: flex;
+  position: fixed;
+  top: calc(20px + var(--safe-top, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1400px;
+  background: transparent;
+  padding: 0.5rem 0;
+  z-index: 100;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.landing-topbar:hover {
+  background: transparent;
+}
+
+.topbar-hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+  pointer-events: none;
+}
+
+.topbar-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.topbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+/* Invisible spacer — reserves space where the animated logo lands */
+.topbar-logo-spacer {
+  width: 120px;
+  height: 1.8rem;
+}
+
+/* Landing Navigation Links */
+.landing-nav-center {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  transition: opacity 0.6s ease 0.3s;
+}
+
+.nav-item-with-tooltip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.landing-nav-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.landing-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.landing-nav-link:hover {
+  color: #fff;
+}
+
+.landing-nav-link:hover::after {
+  width: 100%;
+}
+
+/* Premium Dark Glassmorphism Tooltip */
+.premium-tooltip {
+  position: absolute;
+  top: calc(100% + 15px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(20, 20, 21, 0.7);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Tooltip Arrow */
+.premium-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: rgba(15, 15, 20, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.nav-item-with-tooltip:hover .premium-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Auth buttons */
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: opacity 0.6s ease 0.3s;
+}
+
+.actions-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.actions-visible {
+  opacity: 1;
+}
+
+.topbar-btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.topbar-btn-ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.topbar-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.topbar-btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.topbar-btn-primary:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ─── Hero Content ─── */
+
+.landing-hero-new {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.mobile-hero-logo {
+  display: none;
+}
+
+.hero-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+}
+
+.hero-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.landing-content-new {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-title-new {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.4rem;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  white-space: nowrap !important;
+}
+
+/* Fix for SplitText invisibility: Apply shimmer to GSAP words directly */
+.landing-title-new.shimmer-heading .split-word {
+  background: linear-gradient(110deg, #808080 40%, #ffffff 50%, #808080 60%);
+  background-size: 300% auto;
+  color: #808080;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerTextFast 1.5s linear infinite;
+}
+
+.title-dot {
+  color: var(--primary);
+  -webkit-text-fill-color: var(--primary);
+  font-weight: 400;
+  margin: 0 0.2rem;
+}
+
+.landing-tagline {
+  font-size: 1.3rem;
+  color: rgba(200, 190, 210, 0.9);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+/* Rotating Text Wrapper */
+.landing-rotating-text-wrapper {
+  height: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.landing-rotating-text {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Action Buttons Container */
+.landing-action-buttons {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-actions {
+  display: none;
+}
+
+.landing-cta-new {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.cta-primary {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(255, 255, 255, 0.15);
+}
+
+.cta-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: ctaShimmer 3s ease-in-out infinite;
+}
+
+.cta-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.cta-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+@keyframes ctaShimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.landing-cta-new:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 50px rgba(99, 102, 241, 0.3);
+}
+
+.landing-cta-new:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* ─── Original Logo Animation Styles ─── */
+
+.landing-logo-animated .logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.landing-logo-animated .landing-pluto-campus-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+@keyframes wipeLeftToRight {
+  0% { clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%); opacity: 0; }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); opacity: 1; }
+}
+
+.landing-logo-animated .spinning {
+  animation: plutoSpinSmooth 20s linear infinite;
+}
+
+@keyframes plutoSpinSmooth {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes introPlanetMove {
+  0% { transform: translateX(-180px) scale(3); }
+  100% { transform: translateX(0) scale(1); }
+}
+
+@keyframes introTextReveal {
+  0% { opacity: 0; transform: translateX(40px); clip-path: inset(0 100% 0 0); }
+  100% { opacity: 1; transform: translateX(0); clip-path: inset(0 0 0 0); }
+}
+
+.landing-logo-animated .logo-wrapper.play-intro .landing-pluto-campus-logo {
+  animation: wipeLeftToRight 2.4s ease-in-out forwards;
+}
+
+/* ─── Responsive ─── */
+
+@media (max-width: 768px) {
+  .logo-at-navbar {
+    position: absolute;
+    top: 13vh;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: center;
+  }
+
+  .landing-hero-new {
+    min-height: auto;
+    padding-top: 22vh;
+    padding-bottom: 1rem;
+  }
+
+  .landing-title-new {
+    font-size: 2rem;
+    padding: 0 1rem;
+    word-break: break-word;
+    letter-spacing: -1px;
+    white-space: pre-line !important;
+  }
+
+  .landing-tagline {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+    white-space: pre-line;
+  }
+
+  .landing-description {
+    font-size: 1rem;
+  }
+
+  .landing-rotating-text-wrapper {
+    margin-bottom: 1.5rem;
+  }
+
+  .landing-action-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+
+  .desktop-actions {
+    display: none;
+  }
+
+  .mobile-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .mobile-auth-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .mobile-btn {
+    flex: 1;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .mobile-google-btn {
+    width: fit-content !important;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.85rem !important;
+    font-weight: 500;
+    padding: 0.55rem 1.2rem !important;
+    border-radius: 50px;
+  }
+
+  .mobile-google-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+
+  .mobile-google-btn:disabled {
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .landing-cta-new {
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .landing-nav-center {
+    display: none;
+  }
+
+  .topbar-content {
+    padding: 0 1.2rem;
+  }
+
+  .topbar-actions {
+    display: none;
+  }
+
+  .mobile-hero-logo {
+    display: block;
+    height: 36px;
+    margin: 0 auto 1.2rem auto;
+    object-fit: contain;
+    transition: opacity 0.8s ease;
+  }
+
+  .topbar-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .landing-logo-animated .landing-pluto-campus-logo {
+    height: 40px;
+  }
+
+  .topbar-logo-spacer {
+    width: 80px;
+  }
+}
+
+/* Floating Legal Links */
+.landing-legal-corner {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 100;
+  background: rgba(15, 15, 20, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.landing-legal-corner button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+
+.landing-legal-corner button:hover {
+  color: #fff;
+}
+
+.landing-legal-corner .dot {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .landing-legal-corner {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    margin: 1rem auto 2rem auto;
+    width: max-content;
+    justify-content: center;
+  }
+}
+
+/* Google Play Badge Corner */
+.landing-playstore-corner {
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+  z-index: 100;
+}
+
+.playstore-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 15, 20, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 18px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.playstore-badge:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.playstore-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.playstore-get {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+.playstore-store {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 768px) {
+  .landing-playstore-corner {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    margin: 1rem auto;
+    width: max-content;
+  }
+}

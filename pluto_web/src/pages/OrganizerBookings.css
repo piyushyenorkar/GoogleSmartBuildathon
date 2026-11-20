@@ -1,0 +1,222 @@
+/* Organizer Bookings Page */
+
+.org-bookings-page {
+  padding: 0;
+  min-height: 60vh;
+}
+
+.org-bookings-header {
+  margin-bottom: 2rem;
+}
+
+.org-bookings-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.org-bookings-header p {
+  color: var(--text-secondary);
+}
+
+/* ─── Filters ────────────────────────────────── */
+
+.booking-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.filter-search {
+  flex: 6; /* 60% Width */
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filter-search svg {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.filter-search input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: none;
+  border-radius: 50px;
+  color: var(--white);
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.filter-search input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.filter-select {
+  flex: 4; /* 40% Width */
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: none;
+  border-radius: 50px;
+  color: var(--white);
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* ─── Booking Grid Table ─────────────────────── */
+
+.booking-grid-header {
+  display: grid;
+  grid-template-columns: 140px 2fr 2fr 80px 100px 120px 100px;
+  gap: 1rem;
+  padding: 0 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.booking-grid-row {
+  display: grid;
+  grid-template-columns: 140px 2fr 2fr 80px 100px 120px 100px;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+.b-col {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+}
+
+.b-col-id {
+  font-family: monospace;
+  color: var(--text-muted);
+}
+
+.b-col-title {
+  font-weight: 500;
+  color: var(--white);
+}
+
+.b-col-email {
+  color: var(--text-secondary);
+}
+
+.b-col-amount {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.b-col-date {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* ─── Loading / Empty ────────────────────────── */
+
+.events-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 4rem 0;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .booking-grid-header {
+    display: none;
+  }
+  .booking-grid-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .b-col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .b-col::before {
+    content: attr(data-label);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+  .booking-filters {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+  .filter-search input, .filter-select {
+    padding: 0.65rem 1rem;
+    font-size: 12px;
+  }
+  .filter-search input {
+    padding-left: 2.2rem;
+  }
+  .filter-search input::placeholder {
+    font-size: 12px;
+  }
+}
+
+/* ─── Custom Tooltip ─────────────────────────── */
+
+.export-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.export-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  transform: translateY(4px);
+  background-color: #27272a;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 100;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.export-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 24px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #27272a transparent transparent transparent;
+}
+
+.export-tooltip-wrapper:hover .export-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
