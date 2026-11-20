@@ -1,0 +1,367 @@
+/* Navbar Animation Styles */
+
+/* Keyframes */
+@keyframes burnTransform {
+    0% {
+        filter: brightness(1) contrast(1);
+        box-shadow: 
+            0 0 15px rgba(232, 213, 183, 0.4),
+            inset -3px -3px 10px rgba(0, 0, 0, 0.3);
+    }
+    20% {
+        filter: brightness(1.1) contrast(1.1);
+        box-shadow: 
+            0 0 20px rgba(255, 200, 100, 0.5),
+            inset -3px -3px 10px rgba(0, 0, 0, 0.3);
+    }
+    40% {
+        filter: brightness(1.3) contrast(1.2) saturate(1.5);
+        box-shadow: 
+            0 0 30px rgba(255, 150, 50, 0.7),
+            0 0 50px rgba(255, 100, 0, 0.4),
+            inset 0 0 15px rgba(255, 150, 0, 0.3);
+    }
+    60% {
+        filter: brightness(1.6) contrast(1.3) saturate(2);
+        box-shadow: 
+            0 0 40px rgba(255, 120, 0, 0.8),
+            0 0 70px rgba(255, 80, 0, 0.6),
+            inset 0 0 20px rgba(255, 100, 0, 0.5);
+        transform: scale(1.1);
+    }
+    80% {
+        filter: brightness(2) contrast(1.4) saturate(2.5);
+        box-shadow: 
+            0 0 50px rgba(255, 100, 0, 0.9),
+            0 0 90px rgba(255, 60, 0, 0.7),
+            0 0 120px rgba(255, 120, 0, 0.5),
+            inset 0 0 25px rgba(255, 80, 0, 0.6);
+        transform: scale(1.15);
+    }
+    100% {
+        filter: brightness(2.5) contrast(1.5) saturate(3);
+        box-shadow: 
+            0 0 60px rgba(255, 120, 40, 1),
+            0 0 100px rgba(255, 80, 20, 0.8),
+            0 0 140px rgba(255, 120, 40, 0.6),
+            inset 0 0 30px rgba(255, 255, 255, 0.4);
+        transform: scale(1.2);
+    }
+}
+
+@keyframes textBurn {
+    0% {
+        filter: brightness(1);
+        text-shadow: 0 0 0 rgba(255, 100, 0, 0);
+        color: rgba(255, 255, 255, 0.9);
+    }
+    30% {
+        filter: brightness(1.2);
+        text-shadow: 0 0 10px rgba(255, 69, 0, 0.8);
+        color: #ff8c00;
+    }
+    60% {
+        filter: brightness(1.5);
+        text-shadow: 0 0 20px rgba(255, 69, 0, 1), 0 0 40px rgba(255, 140, 0, 0.6);
+        color: #ff4500;
+        transform: scale(1.1);
+    }
+    100% {
+        filter: brightness(2);
+        text-shadow: 0 0 30px rgba(255, 69, 0, 1), 0 0 60px rgba(255, 0, 0, 0.8);
+        color: #ff0000;
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkFly {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0.2);
+    }
+}
+
+@keyframes fireballPulse {
+    from {
+        transform: scale(1);
+        filter: brightness(1.2);
+    }
+    to {
+        transform: scale(1.15);
+        filter: brightness(1.5);
+    }
+}
+
+@keyframes fadeParticle {
+    0% {
+        opacity: 0.9;
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.7) translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.2) translateY(-20px);
+    }
+}
+
+@keyframes fireShake {
+    0%, 100% { 
+        transform: translateX(0) translateY(0) rotate(0deg); 
+    }
+    10% { 
+        transform: translateX(-2px) translateY(-3px) rotate(-1deg); 
+    }
+    20% { 
+        transform: translateX(3px) translateY(2px) rotate(1deg); 
+    }
+    30% { 
+        transform: translateX(-3px) translateY(1px) rotate(-0.5deg); 
+    }
+    40% { 
+        transform: translateX(2px) translateY(-2px) rotate(0.5deg); 
+    }
+    50% { 
+        transform: translateX(-2px) translateY(3px) rotate(-1deg); 
+    }
+    60% { 
+        transform: translateX(3px) translateY(-2px) rotate(1deg); 
+    }
+    70% { 
+        transform: translateX(-3px) translateY(2px) rotate(-0.5deg); 
+    }
+    80% { 
+        transform: translateX(2px) translateY(-1px) rotate(0.5deg); 
+    }
+    90% { 
+        transform: translateX(-1px) translateY(2px) rotate(-0.5deg); 
+    }
+}
+
+@keyframes plutoSpinSmooth {
+    0% {
+        transform: rotate(0deg) scale(1);
+        filter: brightness(1);
+    }
+    50% {
+        transform: rotate(-180deg) scale(1.1);
+        filter: brightness(1.2);
+    }
+    100% {
+        transform: rotate(-360deg) scale(1);
+        filter: brightness(1);
+    }
+}
+
+/* Logo Styles */
+.logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text-before {
+    display: inline-block;
+    background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-o-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem; /* Match existing logo size or strict dimensions */
+    height: 1.8rem;
+    margin-left: 1px;
+}
+
+.logo-o {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Text Styles to match logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: 1;
+    
+    /* Gradient Text like sibling */
+    background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
+    
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.logo-o.hidden {
+    opacity: 0;
+}
+
+.logo-o.burning {
+    /* Override gradient interaction for burning color */
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: initial;
+    background: transparent;
+    
+    animation: textBurn 1.5s ease-in-out forwards;
+}
+
+/* Fire Effects */
+.fire-spark {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 150, 0, 1) 50%, rgba(255, 80, 0, 0) 100%);
+    box-shadow: 0 0 10px rgba(255, 120, 0, 0.8);
+}
+
+.fireball {
+    position: fixed; /* Fixed to move relative to viewport */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+.fireball.active {
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 220, 120, 1) 15%,
+        rgba(255, 180, 80, 1) 30%,
+        rgba(255, 120, 40, 1) 50%,
+        rgba(255, 80, 20, 1) 70%,
+        rgba(220, 40, 0, 0.9) 85%,
+        rgba(150, 20, 0, 0.6) 100%
+    );
+    box-shadow: 
+        0 0 40px rgba(255, 140, 40, 0.9),
+        0 0 70px rgba(255, 80, 20, 0.7),
+        0 0 100px rgba(255, 120, 40, 0.5),
+        inset 0 0 25px rgba(255, 255, 255, 0.4);
+    animation: fireballPulse 0.2s ease-in-out infinite alternate;
+}
+
+.flame-particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fadeParticle 0.6s ease-out forwards;
+}
+
+/* Nav Link Interaction */
+.nav-links li a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+
+.nav-links li a.fire-effect {
+    animation: textCharBurn 0.8s ease-out forwards;
+    position: relative;
+    display: inline-block; /* Required for transform */
+}
+
+/* Flame trails flowing away */
+.nav-links li a.fire-effect::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(255, 100, 0, 0.8), rgba(255, 50, 0, 0));
+    filter: blur(4px);
+    z-index: -1;
+    animation: flameFlow 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes textCharBurn {
+    0% {
+        color: white;
+        text-shadow: none;
+        transform: scale(1);
+    }
+    20% {
+        color: #ffaa00;
+        text-shadow: 
+            0 0 10px rgba(255, 140, 0, 0.8),
+            0 -10px 20px rgba(255, 69, 0, 0.6);
+        transform: scale(1.1);
+    }
+    100% {
+        color: white; /* Return to normal color? Or stay burnt? 'flows away' implies return to normal */
+        text-shadow: 0 0 5px rgba(255, 100, 0, 0); /* Fade out shadow */
+        transform: scale(1);
+    }
+}
+
+@keyframes flameFlow {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scaleY(0.5);
+    }
+    20% {
+        opacity: 0.8;
+        transform: translateY(-5px) scaleY(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-25px) scaleY(1.5) scaleX(1.2); /* Flow up and dissipate */
+    }
+}
+
+/* Profile Adjustment for Layering */
+.profile-avatar {
+    position: relative;
+    z-index: 50; /* Ensure it is above the planet */
+}
+
+/* Transform Planet */
+.pluto-planet {
+    position: absolute; /* Changed to absolute to be relative to .navbar */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 20; /* Between Navbar (stacking context root) and Profile (50) */
+    opacity: 0;
+    background-image: url('/pluto.png');
+    background-size: cover;
+    background-position: center;
+    /* Use simpler shadow for the PNG if it already has lighting, or keep subtle glow */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
+    transition: opacity 0.4s ease;
+}
+
+.pluto-planet.spinning {
+    animation: plutoSpinSmooth 20s linear infinite; /* Slow consistent spin */
+}

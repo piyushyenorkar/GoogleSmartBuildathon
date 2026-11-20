@@ -1,0 +1,485 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CancelRefundModal.css — PLUTO
+   Professional cancellation flow inspired by Unstop / BookMyShow / Zomato.
+   Dark theme, glassmorphism card, clean typography, animated feedback.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Overlay ───────────────────────────────────────────────────────────────── */
+
+.refund-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1.5rem;
+}
+
+/* ─── Modal card ────────────────────────────────────────────────────────────── */
+
+.refund-modal {
+  background: linear-gradient(160deg, #1c1c24 0%, #16161d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 0;
+  width: 100%;
+  max-width: 460px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px -16px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.refund-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 2;
+}
+
+.refund-modal-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+/* ─── Step content wrapper ──────────────────────────────────────────────────── */
+
+.refund-step-content {
+  padding: 32px 28px;
+  text-align: center;
+}
+
+/* ─── Typography ────────────────────────────────────────────────────────────── */
+
+.refund-modal-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.refund-modal-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  padding: 0 4px;
+}
+
+.refund-modal-event-name {
+  color: var(--primary, #a78bfa);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+}
+
+/* ─── Icon circles ──────────────────────────────────────────────────────────── */
+
+.refund-icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.refund-icon-warning {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.18);
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+}
+
+.refund-icon-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.refund-icon-success {
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.18);
+  box-shadow: 0 0 25px rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+
+.refund-success-pulse {
+  animation: successPulse 2s ease-in-out infinite;
+}
+
+@keyframes successPulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(52, 211, 153, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(52, 211, 153, 0.25); }
+}
+
+/* ─── Spinner ───────────────────────────────────────────────────────────────── */
+
+.refund-spinner {
+  color: var(--primary, #a78bfa);
+  animation: refundSpin 1s linear infinite;
+  margin: 1rem auto;
+  display: block;
+}
+
+@keyframes refundSpin {
+  to { transform: rotate(360deg); }
+}
+
+.refund-processing-ring {
+  margin-bottom: 8px;
+}
+
+/* ─── Confirm subtitle ──────────────────────────────────────────────────────── */
+
+.refund-confirm-subtitle {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.88rem;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.refund-deadline-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #fbbf24;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+/* ─── Policy toggle (ⓘ button) ──────────────────────────────────────────────── */
+
+.refund-policy-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+
+.refund-policy-toggle:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ─── Policy tooltip (expandable) ───────────────────────────────────────────── */
+
+.refund-policy-tooltip {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  animation: policyFadeIn 0.2s ease;
+}
+
+.refund-policy-tooltip p {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.refund-policy-tooltip strong {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes policyFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Receipt card (Step 3) ──────────────────────────────────────────────────── */
+
+.refund-receipt {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin: 20px 0 16px;
+  overflow: hidden;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+}
+
+.receipt-label {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.receipt-icon {
+  opacity: 0.4;
+  flex-shrink: 0;
+}
+
+.receipt-value {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.receipt-sub .receipt-label,
+.receipt-sub .receipt-value {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.receipt-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0 20px;
+}
+
+.receipt-divider-strong {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0;
+}
+
+.receipt-deduct .receipt-label {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.84rem;
+}
+
+.receipt-deduct .receipt-value {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+  font-size: 0.84rem;
+}
+
+.receipt-total {
+  background: rgba(52, 211, 153, 0.04);
+  padding: 16px 20px;
+}
+
+.receipt-total .receipt-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.receipt-highlight {
+  color: #34d399 !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Timeline note ─────────────────────────────────────────────────────────── */
+
+.refund-timeline-note {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* ─── Success state ─────────────────────────────────────────────────────────── */
+
+.refund-success-amount {
+  color: #34d399;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 8px 0 2px;
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 15px rgba(52, 211, 153, 0.35);
+}
+
+.refund-success-label {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────────────────── */
+
+.refund-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.refund-btn {
+  flex: 1;
+  padding: 13px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.refund-btn-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.refund-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.refund-btn-proceed {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.refund-btn-proceed:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.refund-btn-confirm {
+  background: linear-gradient(135deg, #fde68a, #fff0b4);
+  color: #3b3735;
+  box-shadow: 0 4px 15px rgba(253, 230, 138, 0.15);
+}
+
+.refund-btn-confirm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(253, 230, 138, 0.25);
+}
+
+.refund-btn-confirm:active {
+  transform: translateY(0);
+}
+.refund-btn-proceed:active {
+  transform: translateY(0);
+}
+
+.refund-btn-success-close {
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  color: #34d399;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.refund-btn-success-close:hover {
+  background: rgba(52, 211, 153, 0.18);
+}
+
+/* ─── Dashboard booking card badges (used in Dashboard.tsx strips) ──────────── */
+
+.btn-cancel-refund {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-cancel-refund:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.badge-nonrefundable {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.badge-refund-processed {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: #a5b4fc;
+}
+
+/* Status badges */
+.strip-badge-refunded {
+  background: rgba(165, 180, 252, 0.12);
+  color: #a5b4fc;
+  border: 1px solid rgba(165, 180, 252, 0.2);
+}
+
+/* Refunded strikethrough in history */
+.amount-refunded {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* ─── Mobile ────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 520px) {
+  .refund-modal {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .refund-step-content {
+    padding: 24px 20px;
+  }
+
+  .refund-amount-highlight {
+    font-size: 1.15rem;
+  }
+
+  .refund-success-amount {
+    font-size: 1.8rem;
+  }
+
+  .refund-actions {
+    flex-direction: column;
+  }
+
+  .refund-btn {
+    width: 100%;
+  }
+}

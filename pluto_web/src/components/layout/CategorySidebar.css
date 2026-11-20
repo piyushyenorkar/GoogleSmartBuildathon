@@ -1,0 +1,7 @@
+/*
+ * CategorySidebar.css
+ * 
+ * All sidebar layout/visual CSS lives in Explore.css (the page that owns it).
+ * This file is intentionally kept minimal — only component-specific overrides go here.
+ * The glow effect, star-border, category-item, category-label, etc. are all in Explore.css.
+ */

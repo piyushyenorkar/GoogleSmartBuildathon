@@ -1,0 +1,228 @@
+.dsm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+  animation: dsm-fade-in 0.2s ease-out;
+}
+
+@keyframes dsm-fade-in {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to { opacity: 1; backdrop-filter: blur(8px); }
+}
+
+.dsm-modal {
+  width: 100%;
+  max-width: 900px;
+  background: #121212;
+  border-radius: 28px;
+  box-shadow: 0 32px 120px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 80vh;
+  animation: dsm-slide-down 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dsm-slide-down {
+  from { opacity: 0; transform: translateY(-20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.dsm-header {
+  display: flex;
+  align-items: center;
+  padding: 20px 28px 12px 28px;
+  margin: 0;
+  background: transparent;
+  gap: 16px;
+  border: none;
+}
+
+.dsm-search-bar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  gap: 16px;
+}
+
+.dsm-search-bar:focus-within {
+  background: transparent;
+}
+
+.dsm-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 400;
+  outline: none;
+  font-family: inherit;
+}
+
+.dsm-input::placeholder {
+  color: #52525b;
+}
+
+.dsm-tabs {
+  display: flex;
+  padding: 0 28px;
+  gap: 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dsm-tab {
+  padding: 16px 0;
+  color: #a1a1aa;
+  background: transparent;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.dsm-tab:hover {
+  color: #fff;
+}
+
+.dsm-tab.active {
+  color: #fff;
+}
+
+.dsm-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #a78bfa;
+  border-radius: 2px;
+}
+
+.dsm-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px;
+}
+
+.dsm-body::-webkit-scrollbar {
+  width: 2px;
+}
+.dsm-body::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+
+.dsm-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.dsm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.dsm-grid .tc-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: unset !important;
+  margin: 0;
+}
+
+.dsm-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.dsm-category {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #a1a1aa;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.dsm-category.active {
+  background: #a78bfa;
+  color: #121212;
+}
+
+.dsm-category:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* Recent searches */
+.dsm-recent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.dsm-recent-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #d4d4d8;
+  cursor: pointer;
+}
+
+.dsm-recent-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dsm-recent-pill button {
+  background: transparent;
+  border: none;
+  color: #a1a1aa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 50%;
+}
+
+.dsm-recent-pill button:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+/* Hide Desktop Modal on mobile */
+@media (max-width: 768px) {
+  .dsm-overlay {
+    display: none !important;
+  }
+}

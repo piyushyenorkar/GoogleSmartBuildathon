@@ -1,0 +1,286 @@
+/* ── ULTRA PREMIUM LIGHT SPATIAL GLASS LOCK SCREEN ── */
+.pin-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdfdfd;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Beautiful Animated Abstract Mesh Background */
+.pin-gate-space {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(120% 100% at 50% 120%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+    linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  z-index: 0;
+}
+
+/* Dynamic Highly Blurred Colorful Orbs */
+.pin-gate-glow-1 {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+  top: -200px;
+  left: -200px;
+  border-radius: 50%;
+  filter: blur(100px);
+  animation: floatOrb 12s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.pin-gate-glow-2 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 60%);
+  bottom: -150px;
+  right: -100px;
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: floatOrb 15s ease-in-out infinite alternate-reverse;
+  z-index: 1;
+}
+
+.pin-gate-glow-3 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 60%);
+  top: 30%;
+  left: 40%;
+  border-radius: 50%;
+  filter: blur(90px);
+  animation: floatOrb 10s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes floatOrb {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.7; }
+  100% { transform: scale(1.15) translate(40px, -40px); opacity: 1; }
+}
+
+/* Premium Glass Card */
+.pin-gate-card {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 3.5rem;
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(60px) saturate(180%);
+  box-shadow: 
+    0 10px 40px -10px rgba(0, 0, 0, 0.04),
+    0 30px 80px -20px rgba(0, 0, 0, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.8);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pin-gate-card.pin-unlocked {
+  box-shadow: 
+    0 20px 60px -10px rgba(16, 185, 129, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 1),
+    0 0 0 1px rgba(16, 185, 129, 0.3);
+}
+
+/* Sleek Icon / Logo */
+.pin-gate-icon-wrapper {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.pin-gate-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4f46e5;
+  box-shadow: 
+    0 10px 25px -5px rgba(79, 70, 229, 0.15),
+    inset 0 2px 4px rgba(255, 255, 255, 1);
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.pin-unlocked .pin-gate-icon {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+  color: #10b981;
+  box-shadow: 
+    0 10px 25px -5px rgba(16, 185, 129, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 1);
+}
+
+/* Crisp Typography */
+.pin-gate-title {
+  color: #0f172a;
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.04em;
+  background: linear-gradient(to right, #0f172a, #334155);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pin-gate-subtitle {
+  color: #64748b;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 500;
+  margin: 0 0 3rem;
+  max-width: 320px;
+}
+
+/* Refined Inputs */
+.pin-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.pin-input-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 2rem;
+}
+
+.pin-digit-input {
+  width: 56px;
+  height: 72px;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 18px;
+  color: #0f172a;
+  font-size: 1.75rem;
+  font-weight: 800;
+  text-align: center;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 15px 30px -5px rgba(0, 0, 0, 0.15),
+    0 10px 15px -5px rgba(0, 0, 0, 0.1),
+    inset 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+.pin-digit-input:hover {
+  border-color: #cbd5e1;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 15px 25px -5px rgba(0, 0, 0, 0.15),
+    inset 0 2px 4px rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+}
+
+.pin-digit-input:focus {
+  border-color: #4f46e5;
+  background: #ffffff;
+  box-shadow: 
+    0 0 0 5px rgba(99, 102, 241, 0.25),
+    0 30px 60px -10px rgba(99, 102, 241, 0.35),
+    0 15px 30px -5px rgba(99, 102, 241, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 1);
+  transform: translateY(-3px);
+}
+
+.pin-digit-input.filled {
+  border-color: #a5b4fc;
+  background: #f8fafc;
+  color: #4f46e5;
+}
+
+.pin-digit-input.error {
+  border-color: #ef4444;
+  background: #fff5f5;
+  color: #ef4444;
+  animation: bounceShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes bounceShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px) rotate(-2deg); }
+  40% { transform: translateX(5px) rotate(2deg); }
+  60% { transform: translateX(-3px) rotate(-1deg); }
+  80% { transform: translateX(2px) rotate(1deg); }
+}
+
+/* Elegant Status Badges */
+.pin-status-wrapper {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-error-msg {
+  color: #dc2626;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fef2f2;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+}
+
+.pin-verifying-msg {
+  color: #4f46e5;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #eef2ff;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+}
+
+.pin-cooldown-msg {
+  color: #d97706;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: #fffbeb;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+}
+
+/* Refined Spinner */
+.spin-loader {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: spin 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

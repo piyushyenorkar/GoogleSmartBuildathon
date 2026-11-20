@@ -1,0 +1,69 @@
+/* Freeze Effect */
+.nav-links li a.freeze-effect {
+    animation: textFreeze 0.8s ease-out forwards;
+    position: relative;
+    display: inline-block;
+}
+
+/* Ice crystals / Mist flowing everywhere */
+.nav-links li a.freeze-effect::after {
+    content: '';
+    position: absolute;
+    left: -20%;
+    top: -50%;
+    width: 140%;
+    height: 200%;
+    /* Radial gradient for omni-directional glow - Balanced Intensity */
+    background: radial-gradient(circle, rgba(135, 206, 250, 0.7) 0%, rgba(173, 216, 230, 0.3) 60%, rgba(255, 255, 255, 0) 80%);
+    filter: blur(8px);
+    z-index: -1;
+    animation: mistBurst 0.8s ease-out forwards;
+    opacity: 0;
+    border-radius: 50%;
+}
+
+@keyframes mistBurst {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    20% {
+        opacity: 0.8; /* Reduced from 1 */
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.6); /* Reduced from 2.0 */
+    }
+}
+
+@keyframes textFreeze {
+    0% {
+        color: white;
+        text-shadow: none;
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.1) rotate(-2deg); /* Impact shock */
+    }
+    20% {
+        color: #e0f7fa; /* Light cyan */
+        /* BALANCED GLOW */
+        text-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.9),
+            0 0 20px rgba(0, 190, 255, 0.7);
+        transform: scale(1.05);
+    }
+    80% {
+        color: #e0f7fa;
+        text-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.9),
+            0 0 20px rgba(0, 190, 255, 0.7);
+        transform: scale(1.05); /* Stay frozen */
+    }
+    100% {
+        color: white; 
+        text-shadow: none;
+        transform: scale(1);
+    }
+}
