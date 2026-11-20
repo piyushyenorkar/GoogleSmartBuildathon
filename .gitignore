@@ -5,6 +5,8 @@ build/
 .env.*
 !.env.example
 *.log
+*.tsbuildinfo
+test_supa.mjs
 firebase-service-account.json
 **/firebase-service-account.json
 scratch/
