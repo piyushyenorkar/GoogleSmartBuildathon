@@ -1,0 +1,15 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pluto_app",
+      "sha256_cert_fingerprints": [
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C",
+        "BF:A7:5E:DC:BA:7A:48:9F:C0:F7:C0:93:D6:14:B8:45:76:5E:F0:CE:E3:EF:6B:AB:CC:25:28:42:18:08:C3:6E",
+        "A1:37:3A:D6:1A:BF:66:F7:9B:85:C2:74:76:F4:4B:74:31:8B:FB:F1:E1:25:CB:B5:3A:B2:5C:34:64:BC:75:BA",
+        "4B:01:9C:44:80:38:46:26:11:EE:A8:77:51:34:41:17:3F:2C:97:8C:E9:41:D7:BA:6C:FC:4D:BA:C3:41:5E:80"
+      ]
+    }
+  }
+]
